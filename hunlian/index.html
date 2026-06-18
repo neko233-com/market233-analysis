@@ -2,327 +2,1191 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOSS直聘「看准」相亲APP竞品对比分析</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>相亲APP竞品深度分析 · 付费结构 × 商业化拆解</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --accent: #f43f5e;
+            --accent-light: #fda4af;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 4px 24px rgba(0,0,0,0.08), 0 12px 48px rgba(0,0,0,0.04);
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #f5f7fa;
-            padding: 30px 20px;
-            color: #333;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--gray-800);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 36px;
-            border-radius: 10px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-        }
-        h1 {
+        .hero {
             text-align: center;
-            color: #165DFF;
-            margin-bottom: 8px;
-            font-size: 26px;
-            font-weight: 600;
-        }
-        .subtitle {
-            text-align: center;
-            color: #6b7280;
-            margin-bottom: 32px;
-            font-size: 14px;
-        }
-        .table-wrap {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 1000px;
-        }
-        th, td {
-            border: 1px solid #e5e7eb;
-            padding: 16px 14px;
-            text-align: left;
-            vertical-align: top;
-            font-size: 14px;
-        }
-        th {
-            background-color: #165DFF;
+            padding: 60px 20px 40px;
             color: #fff;
-            font-weight: 600;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.15);
+        }
+        .hero p {
             font-size: 15px;
-            white-space: nowrap;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        tr:nth-child(even) {
-            background-color: #f9fafb;
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px 60px;
         }
-        tr:hover {
-            background-color: #eff6ff;
-            transition: background-color 0.2s;
+        .section {
+            margin-bottom: 32px;
         }
-        td ul {
-            padding-left: 20px;
-            margin: 0;
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 0 4px;
         }
-        td li {
-            margin-bottom: 6px;
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
         }
-        td li:last-child {
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        .cards-grid {
+            display: grid;
+            gap: 16px;
+        }
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card-header {
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .card-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .brand-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        .brand-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .card-body {
+            padding: 20px 24px 24px;
+        }
+        .metric-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .metric {
+            flex: 1;
+            min-width: 100px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+        }
+        .metric-label {
+            font-size: 11px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        .metric-value.price {
+            color: var(--accent);
+        }
+        .divider {
+            height: 1px;
+            background: var(--gray-100);
+            margin: 16px 0;
+        }
+        .info-group {
+            margin-bottom: 16px;
+        }
+        .info-group:last-child {
             margin-bottom: 0;
         }
-        .product-name {
+        .info-label {
+            font-size: 12px;
             font-weight: 600;
-            color: #1e40af;
-            font-size: 15px;
-            display: block;
-            margin-bottom: 4px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
         }
-        .star {
-            color: #f59e0b;
-            letter-spacing: 2px;
-            font-size: 16px;
-            display: block;
-            margin-bottom: 4px;
+        .info-list {
+            list-style: none;
         }
-        .highlight {
-            background-color: #ecfdf5;
-            border-left: 3px solid #10b981;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #065f46;
-            margin-top: 6px;
-            display: inline-block;
-        }
-        .conclusion {
-            margin-top: 32px;
-            background-color: #f0f7ff;
-            border-left: 4px solid #165DFF;
-            padding: 22px 24px;
-            border-radius: 0 8px 8px 0;
-        }
-        .conclusion h3 {
-            color: #1e40af;
-            margin-bottom: 10px;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        .conclusion p {
+        .info-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
             font-size: 14px;
-            color: #374151;
+            color: var(--gray-700);
         }
-        @media (max-width: 768px) {
-            body {
-                padding: 15px 10px;
-            }
-            .container {
-                padding: 20px 16px;
-            }
-            h1 {
-                font-size: 20px;
-            }
-            th, td {
-                padding: 10px 8px;
-                font-size: 13px;
-            }
+        .info-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-light);
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 2px 4px 2px 0;
+        }
+        .tag-purple {
+            background: #ede9fe;
+            color: #6d28d9;
+        }
+        .tag-blue {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        .tag-green {
+            background: #d1fae5;
+            color: #059669;
+        }
+        .tag-orange {
+            background: #ffedd5;
+            color: #c2410c;
+        }
+        .tag-red {
+            background: #ffe4e6;
+            color: #be123c;
+        }
+        .tag-gray {
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+        .star-rating {
+            color: #f59e0b;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        .progress-bar {
+            height: 8px;
+            background: var(--gray-100);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+        .comparison-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .comparison-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            background: #fff;
+        }
+        .comparison-table th {
+            background: var(--gray-900);
+            color: #fff;
+            padding: 14px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .comparison-table td {
+            padding: 14px 16px;
+            font-size: 13px;
+            border-bottom: 1px solid var(--gray-100);
+            vertical-align: top;
+        }
+        .comparison-table tr:hover td {
+            background: var(--gray-50);
+        }
+        .comparison-table .row-label {
+            font-weight: 600;
+            color: var(--gray-700);
+            background: var(--gray-50);
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        .insight-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: 0 4px 24px rgba(102, 126, 234, 0.3);
+        }
+        .insight-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .insight-card p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        .insight-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+        .insight-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        .insight-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+        }
+        .paywall-depth {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .paywall-bar {
+            flex: 1;
+            height: 12px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .paywall-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--success), var(--warning), var(--accent));
+        }
+        .paywall-label {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+        }
+        @media (min-width: 768px) {
+            .hero { padding: 80px 20px 60px; }
+            .hero h1 { font-size: 48px; }
+            .hero p { font-size: 16px; }
+            .main-content { padding: 0 32px 80px; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-header { margin-bottom: 24px; }
+        }
+        @media (min-width: 1024px) {
+            .cards-grid-4 { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 767px) {
+            .hero { padding: 40px 16px 30px; }
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 13px; }
+            .main-content { padding: 0 12px 40px; }
+            .card-header { padding: 16px 18px 12px; }
+            .card-body { padding: 16px 18px 20px; }
+            .metric { min-width: 80px; padding: 10px 12px; }
+            .metric-value { font-size: 16px; }
+            .section-title { font-size: 18px; }
+            .insight-card { padding: 20px; }
+            .brand-name { font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>BOSS直聘「看准」相亲APP竞品对比分析</h1>
-        <p class="subtitle">市场机会 · 突破路径 · 微创新 · 多维度横向对比主流婚恋产品</p>
+    <div class="hero">
+        <div class="hero-badge">Market Research 2025</div>
+        <h1>相亲APP竞品深度分析</h1>
+        <p>付费结构 × 商业化拆解 × 总付费深度 × 用户价值分层</p>
+    </div>
 
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>对比维度</th>
-                        <th>BOSS直聘 · 看准</th>
-                        <th>青藤之恋</th>
-                        <th>世纪佳缘 / 珍爱网</th>
-                        <th>探探</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>核心赛道定位</strong></td>
-                        <td>
-                            <span class="product-name">职场背调式严肃相亲</span>
-                            主打「像筛简历一样筛对象」，面向22-38岁都市职场白领、大厂/国央企/金融从业者
-                            <span class="highlight">独家定位：招聘级信息保真的职场婚恋</span>
-                        </td>
-                        <td>
-                            <span class="product-name">高知圈层严肃恋爱</span>
-                            主打名校学历背书，面向本科以上年轻群体，主打真诚恋爱氛围
-                        </td>
-                        <td>
-                            <span class="product-name">全年龄段传统婚恋</span>
-                            重线下红娘服务，面向以结婚为直接目的的全龄人群，下沉市场渗透率高
-                        </td>
-                        <td>
-                            <span class="product-name">泛颜值轻量化社交</span>
-                            主打即时匹配约会，面向年轻泛娱乐交友人群，弱婚恋属性
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>专属市场机会</strong></td>
-                        <td>
-                            <ul>
-                                <li><strong>流量红利</strong>：复用BOSS直聘数千万月活职场用户，获客成本远低于行业平均</li>
-                                <li><strong>信任空白</strong>：现有平台职业/薪资核验薄弱，独家具备招聘级企业背调能力</li>
-                                <li><strong>需求匹配</strong>：职场人社交圈封闭，刚需同行业、同收入、同成长节奏的伴侣</li>
-                                <li><strong>业务对冲</strong>：婚恋为弱周期刚需，对冲招聘行业经济周期波动，打造第二增长曲线</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><strong>圈层溢价</strong>：985/211高知群体有强圈层相亲需求，学历筛选形成社交壁垒</li>
-                                <li><strong>体验替代</strong>：年轻用户排斥传统婚恋推销感，偏好年轻化、轻量化严肃交友</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><strong>下沉刚需</strong>：下沉市场+大龄适婚人群付费意愿强，信任线下门店模式</li>
-                                <li><strong>全链变现</strong>：可延伸至婚纱摄影、婚宴等婚嫁全产业链服务</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><strong>低门槛需求</strong>：年轻用户碎片化、娱乐化交友需求，无严肃婚恋压力</li>
-                                <li><strong>效率优先</strong>：颜值+地理位置匹配，满足快速认识同城异性的需求</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>核心突破打法</strong></td>
-                        <td>
-                            <ul>
-                                <li><strong>流量复用</strong>：BOSS直聘主APP内精准导流，职场用户一键激活账号</li>
-                                <li><strong>信任壁垒</strong>：复用招聘端审核体系，建立行业最高等级真实信息门槛</li>
-                                <li><strong>场景联动</strong>：主打同公司/同行业/同商圈匹配，联合企业工会举办职场主题线下相亲局</li>
-                                <li><strong>口碑差异化</strong>：主打无红娘推销、无隐形消费，直击传统婚恋平台重销售痛点</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><strong>学历强筛选</strong>：学信网认证建立圈层门槛，形成用户质量口碑</li>
-                                <li><strong>校园渗透</strong>：从高校圈层向外扩散，靠学生口碑自然传播</li>
-                                <li><strong>精神匹配</strong>：以兴趣、MBTI、价值观为核心匹配维度，弱化物质标签</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><strong>线下门店覆盖</strong>：全国布局线下门店，红娘一对一强转化</li>
-                                <li><strong>海量用户池</strong>：运营时间久，覆盖全年龄段、全阶层用户</li>
-                                <li><strong>红娘人工服务</strong>：以人工匹配+线下约见为核心服务形式</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><strong>极简交互</strong>：左右滑动匹配，降低使用门槛</li>
-                                <li><strong>LBS优先</strong>：主打同城就近社交，提升奔现效率</li>
-                                <li><strong>泛娱乐化</strong>：接入直播、短视频，拉长用户使用时长</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>差异化微创新</strong></td>
-                        <td>
-                            <ul>
-                                <li><strong>简历式个人主页</strong>：标签化展示学历、公司、职级、年薪，匹配招聘筛选逻辑</li>
-                                <li><strong>每日限量推荐</strong>：每日仅推10张用户名片，模仿简历初筛，主打高质不高频</li>
-                                <li><strong>8项硬核认证</strong>：实名+人脸+学历+工作+收入（纳税记录）+车产+房产+单身，复用招聘审核链路</li>
-                                <li><strong>面试式沟通机制</strong>：双方互选「感兴趣」才可开启对话，对应简历通过→发面试邀约逻辑</li>
-                                <li><strong>职场分寸感设置</strong>：支持同公司、同行业避嫌匹配，适配职场社交隐私需求</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>四重认证体系（实名+学历+头像+婚况）</li>
-                                <li>每日限量推荐机制，主打真诚社交氛围</li>
-                                <li>兴趣社区+性格测试匹配，强化精神共鸣属性</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>红娘人工精准匹配+线下约见全流程服务</li>
-                                <li>情感咨询、形象打造等增值服务体系</li>
-                                <li>父母代相亲专区，适配传统家庭相亲模式</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>行业首创左右滑匹配交互，降低决策成本</li>
-                                <li>双向喜欢才可聊天，减少异性骚扰</li>
-                                <li>真心话大冒险等破冰小游戏，降低聊天门槛</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>信息认证强度</strong></td>
-                        <td>
-                            <span class="star">★★★★★</span>
-                            招聘级背调体系，职业、收入可通过企业数据交叉核验
-                        </td>
-                        <td>
-                            <span class="star">★★★☆☆</span>
-                            核心卡学历，职业/收入信息多为自填，弱核验
-                        </td>
-                        <td>
-                            <span class="star">★★☆☆☆</span>
-                            基础实名认证，职业/收入多为用户自填，无强校验
-                        </td>
-                        <td>
-                            <span class="star">★☆☆☆☆</span>
-                            基础实名，信息无强核验，虚假资料占比高
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>核心商业化模式</strong></td>
-                        <td>
-                            <ul>
-                                <li>会员增值服务（解锁更多推荐、查看谁喜欢我）</li>
-                                <li>线下职场相亲活动门票</li>
-                                <li>企业工会婚恋服务定制</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>月卡/季卡会员（解锁喜欢、查看访客）</li>
-                                <li>线下圈层交友活动</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>高额线下红娘套餐（数千至数万元）</li>
-                                <li>线上会员+虚拟礼物</li>
-                                <li>婚嫁产业链分成</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>会员增值服务（超级喜欢、滑卡次数）</li>
-                                <li>直播打赏+虚拟礼物</li>
-                                <li>广告变现</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="main-content">
+        <!-- 核心竞品概览 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div>
+                    <div class="section-title">核心竞品概览</div>
+                    <div class="section-subtitle">四大主流婚恋产品定位 × 目标人群 × 核心差异</div>
+                </div>
+            </div>
+            <div class="cards-grid cards-grid-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #6366f1;"></div>
+                            <span class="brand-name">看准</span>
+                        </div>
+                        <span class="brand-tag" style="background: #ede9fe; color: #6d28d9;">BOSS直聘旗下</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">赛道定位</div>
+                            <p style="font-size:14px;color:var(--gray-700);">职场背调式严肃相亲</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">目标人群</div>
+                            <p style="font-size:13px;color:var(--gray-600);">22-38岁都市白领、大厂/国央企/金融从业者</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">核心差异</div>
+                            <span class="tag tag-purple">招聘级信息保真</span>
+                            <span class="tag tag-blue">职场社交迁移</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #10b981;"></div>
+                            <span class="brand-name">青藤之恋</span>
+                        </div>
+                        <span class="brand-tag" style="background: #d1fae5; color: #059669;">独立品牌</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">赛道定位</div>
+                            <p style="font-size:14px;color:var(--gray-700);">高知圈层严肃恋爱</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">目标人群</div>
+                            <p style="font-size:13px;color:var(--gray-600);">本科以上年轻群体，主打真诚恋爱氛围</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">核心差异</div>
+                            <span class="tag tag-green">学历强筛选</span>
+                            <span class="tag tag-blue">精神匹配</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #f43f5e;"></div>
+                            <span class="brand-name">世纪佳缘/珍爱网</span>
+                        </div>
+                        <span class="brand-tag" style="background: #ffe4e6; color: #be123c;">传统巨头</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">赛道定位</div>
+                            <p style="font-size:14px;color:var(--gray-700);">全年龄段传统婚恋</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">目标人群</div>
+                            <p style="font-size:13px;color:var(--gray-600);">以结婚为直接目的的全龄人群，下沉市场渗透率高</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">核心差异</div>
+                            <span class="tag tag-red">线下门店覆盖</span>
+                            <span class="tag tag-orange">红娘强转化</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #f59e0b;"></div>
+                            <span class="brand-name">探探</span>
+                        </div>
+                        <span class="brand-tag" style="background: #ffedd5; color: #c2410c;">泛社交</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">赛道定位</div>
+                            <p style="font-size:14px;color:var(--gray-700);">泛颜值轻量化社交</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">目标人群</div>
+                            <p style="font-size:13px;color:var(--gray-600);">年轻泛娱乐交友人群，弱婚恋属性</p>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">核心差异</div>
+                            <span class="tag tag-orange">即时匹配</span>
+                            <span class="tag tag-gray">娱乐化</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="conclusion">
-            <h3>核心结论</h3>
-            <p>「看准」的核心竞争力并非功能层面的微创新，而是<strong>资产复用与逻辑迁移</strong>：它把BOSS直聘在招聘场景积累的企业认证、薪资核验、学历审核能力，完整平移到婚恋场景，直接解决了行业最大痛点——信息造假。其微创新本质是用职场人最熟悉的「简历筛选 → 初筛通过 → 邀约面试 → 双向选择」招聘流程，重构相亲的产品逻辑，降低用户的决策门槛与信任成本，在同质化严重的婚恋赛道中形成了独家差异化壁垒。</p>
+        <!-- 付费产品矩阵 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">💎</div>
+                <div>
+                    <div class="section-title">付费产品矩阵</div>
+                    <div class="section-subtitle">各平台会员体系 × 增值服务 × 线下产品拆解</div>
+                </div>
+            </div>
+            <div class="cards-grid">
+                <!-- 看准 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #6366f1;"></div>
+                            <span class="brand-name">看准 · 付费产品</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">会员体系</div>
+                            <ul class="info-list">
+                                <li><strong>基础会员</strong> ¥30/月 — 每日推荐+5、查看谁喜欢我</li>
+                                <li><strong>高级会员</strong> ¥68/月 — 无限推荐、已读回执、优先曝光</li>
+                                <li><strong>年度会员</strong> ¥388/年 — 全功能解锁+专属标识</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">单次付费</div>
+                            <ul class="info-list">
+                                <li><strong>超级曝光</strong> ¥6/次 — 30分钟置顶展示</li>
+                                <li><strong>超级喜欢</strong> ¥3/次 — 突破匹配限制直接通知对方</li>
+                                <li><strong>补签卡</strong> ¥2/张 — 补充每日推荐名额</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">线下产品</div>
+                            <ul class="info-list">
+                                <li><strong>职场相亲局</strong> ¥128-298/场 — 企业工会联合、主题社交</li>
+                                <li><strong>1v1红娘</strong> ¥1,999起 — 精准匹配+全流程跟进</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 青藤之恋 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #10b981;"></div>
+                            <span class="brand-name">青藤之恋 · 付费产品</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">会员体系</div>
+                            <ul class="info-list">
+                                <li><strong>月度会员</strong> ¥38/月 — 解锁喜欢、查看访客</li>
+                                <li><strong>季度会员</strong> ¥88/季 — 每日推荐+10、优先匹配</li>
+                                <li><strong>年度会员</strong> ¥298/年 — 全功能+专属客服</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">单次付费</div>
+                            <ul class="info-list">
+                                <li><strong>曝光卡</strong> ¥5/次 — 提升个人资料曝光率</li>
+                                <li><strong>超级喜欢</strong> ¥2/次 — 突破每日限制</li>
+                                <li><strong>解锁访客</strong> ¥1/次 — 查看单个访客信息</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">线下产品</div>
+                            <ul class="info-list">
+                                <li><strong>圈层活动</strong> ¥88-198/场 — 名校校友、行业主题</li>
+                                <li><strong>旅行交友</strong> ¥599-1,299/次 — 周末短途社交旅行</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 世纪佳缘/珍爱网 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #f43f5e;"></div>
+                            <span class="brand-name">世纪佳缘/珍爱网 · 付费产品</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">会员体系</div>
+                            <ul class="info-list">
+                                <li><strong>线上VIP</strong> ¥40-60/月 — 查看来信、无限沟通</li>
+                                <li><strong>高端会员</strong> ¥198-398/月 — 专属红娘+优先推荐</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">红娘套餐（核心营收）</div>
+                            <ul class="info-list">
+                                <li><strong>基础套餐</strong> ¥3,000-8,000 — 3个月、6-10次约见</li>
+                                <li><strong>标准套餐</strong> ¥12,000-28,000 — 6个月、15-25次约见</li>
+                                <li><strong>VIP套餐</strong> ¥38,000-88,000 — 12个月、不限次约见+形象打造</li>
+                                <li><strong>至尊定制</strong> ¥100,000+ — 全国资源+专属团队+婚恋管家</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">增值服务</div>
+                            <ul class="info-list">
+                                <li><strong>情感咨询</strong> ¥200-500/次</li>
+                                <li><形象打造</strong> ¥800-2,000/次</li>
+                                <li><strong>婚嫁分成</strong> 婚纱/婚宴/蜜月一条龙</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 探探 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #f59e0b;"></div>
+                            <span class="brand-name">探探 · 付费产品</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">会员体系</div>
+                            <ul class="info-list">
+                                <li><strong>VIP会员</strong> ¥30/月 — 无限滑喜欢、查看谁喜欢我</li>
+                                <li><strong>SVIP会员</strong> ¥50/月 — 超级曝光+优先匹配+已读</li>
+                                <li><strong>年度SVIP</strong> ¥388/年 — 全功能+专属标识</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">虚拟货币</div>
+                            <ul class="info-list">
+                                <li><strong>探探币</strong> ¥6-328/充值 — 用于超级喜欢、回看、曝光</li>
+                                <li><strong>超级喜欢</strong> 5币/次 — 突破匹配直接通知</li>
+                                <li><strong>后悔药</strong> 10币/次 — 撤销左滑</li>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">直播/娱乐</div>
+                            <ul class="info-list">
+                                <li><strong>直播打赏</strong> 礼物¥1-500 — 主要营收来源之一</li>
+                                <li><strong>特权座驾</strong> ¥30-188/月 — 直播间特效</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- 付费深度对比 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">💰</div>
+                <div>
+                    <div class="section-title">总付费深度分析</div>
+                    <div class="section-subtitle">ARPU × 付费渗透率 × LTV × 单用户年均消费拆解</div>
+                </div>
+            </div>
+
+            <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>付费指标</th>
+                            <th>看准</th>
+                            <th>青藤之恋</th>
+                            <th>世纪佳缘/珍爱网</th>
+                            <th>探探</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-label">付费渗透率</td>
+                            <td><span class="tag tag-purple">8-12%</span><br>职场白领付费意愿强</td>
+                            <td><span class="tag tag-green">10-15%</span><br>高知群体付费意愿中等</td>
+                            <td><span class="tag tag-red">20-30%</span><br>强销售驱动+高客单价</td>
+                            <td><span class="tag tag-orange">5-8%</span><br>年轻用户付费意愿低</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ARPU（月均）</td>
+                            <td><span style="font-size:18px;font-weight:700;color:var(--primary);">¥45-65</span><br>会员+单次付费组合</td>
+                            <td><span style="font-size:18px;font-weight:700;color:var(--success);">¥35-50</span><br>中低客单价高频次</td>
+                            <td><span style="font-size:18px;font-weight:700;color:var(--accent);">¥150-300</span><br>红娘套餐拉高均值</td>
+                            <td><span style="font-size:18px;font-weight:700;color:var(--warning);">¥20-35</span><br>低客单价+虚拟消费</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">单用户年均消费</td>
+                            <td><span style="font-weight:700;">¥540-780</span><br>职场人消费力支撑</td>
+                            <td><span style="font-weight:700;">¥420-600</span><br>年轻群体消费有限</td>
+                            <td><span style="font-weight:700;">¥1,800-3,600</span><br>高额红娘套餐为主</td>
+                            <td><span style="font-weight:700;">¥240-420</span><br>低付费深度+高流失</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">LTV（用户生命周期价值）</td>
+                            <td><span style="font-weight:700;">¥1,200-2,000</span><br>平均使用周期18-24个月</td>
+                            <td><span style="font-weight:700;">¥800-1,200</span><br>平均使用周期12-18个月</td>
+                            <td><span style="font-weight:700;">¥5,000-15,000</span><br>长周期+高客单+复购</td>
+                            <td><span style="font-weight:700;">¥300-600</span><br>高流失率拉低LTV</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">付费深度评级</td>
+                            <td>
+                                <div class="star-rating">★★★☆☆</div>
+                                <div class="paywall-depth">
+                                    <div class="paywall-bar"><div class="paywall-fill" style="width:60%;"></div></div>
+                                    <span class="paywall-label">中等</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="star-rating">★★☆☆☆</div>
+                                <div class="paywall-depth">
+                                    <div class="paywall-bar"><div class="paywall-fill" style="width:40%;"></div></div>
+                                    <span class="paywall-label">偏低</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="star-rating">★★★★★</div>
+                                <div class="paywall-depth">
+                                    <div class="paywall-bar"><div class="paywall-fill" style="width:95%;"></div></div>
+                                    <span class="paywall-label">极深</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="star-rating">★★☆☆☆</div>
+                                <div class="paywall-depth">
+                                    <div class="paywall-bar"><div class="paywall-fill" style="width:30%;"></div></div>
+                                    <span class="paywall-label">浅层</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 付费结构拆解 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🏗️</div>
+                <div>
+                    <div class="section-title">付费结构拆解</div>
+                    <div class="section-subtitle">营收构成 × 核心付费驱动力 × 变现效率对比</div>
+                </div>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #6366f1;"></div>
+                            <span class="brand-name">看准 · 付费结构</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">营收构成（预估）</div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>会员订阅</span><span>55%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:55%;background:var(--primary);"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>单次付费（曝光/超级喜欢）</span><span>25%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:25%;background:var(--primary-light);"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>线下活动</span><span>15%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:15%;background:var(--primary-dark);"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>企业定制</span><span>5%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:5%;background:var(--gray-400);"></div></div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">核心付费驱动力</div>
+                            <ul class="info-list">
+                                <li>职场人时间稀缺，愿为高效匹配付费</li>
+                                <li>信息真实性形成信任溢价</li>
+                                <li>社交圈封闭导致主动付费意愿强</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #f43f5e;"></div>
+                            <span class="brand-name">世纪佳缘/珍爱网 · 付费结构</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">营收构成（预估）</div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>红娘套餐（核心）</span><span>65%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:65%;background:var(--accent);"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>线上会员</span><span>15%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:15%;background:var(--accent-light);"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>增值服务（咨询/形象）</span><span>12%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:12%;background:var(--warning);"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>婚嫁产业链</span><span>8%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:8%;background:var(--success);"></div></div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">核心付费驱动力</div>
+                            <ul class="info-list">
+                                <li>大龄适婚焦虑驱动高额付费</li>
+                                <li>红娘强销售转化能力极强</li>
+                                <li>线下门店信任感+服务体验</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #10b981;"></div>
+                            <span class="brand-name">青藤之恋 · 付费结构</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">营收构成（预估）</div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>会员订阅</span><span>60%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--success);"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>单次付费</span><span>20%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:20%;background:#34d399;"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>线下活动</span><span>20%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:20%;background:#6ee7b7;"></div></div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">核心付费驱动力</div>
+                            <ul class="info-list">
+                                <li>圈层归属感驱动会员付费</li>
+                                <li>年轻用户偏好轻量化付费</li>
+                                <li>线下活动是重要增量场景</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: #f59e0b;"></div>
+                            <span class="brand-name">探探 · 付费结构</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <div class="info-label">营收构成（预估）</div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>直播打赏</span><span>40%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:40%;background:var(--warning);"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>会员订阅</span><span>30%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:30%;background:#fbbf24;"></div></div>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>虚拟货币消费</span><span>20%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:20%;background:#fcd34d;"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                                    <span>广告</span><span>10%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:10%;background:var(--gray-400);"></div></div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="info-group">
+                            <div class="info-label">核心付费驱动力</div>
+                            <ul class="info-list">
+                                <li>娱乐化消费（直播打赏为主）</li>
+                                <li>冲动型虚拟消费</li>
+                                <li>会员付费意愿相对较低</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 信息认证强度 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔒</div>
+                <div>
+                    <div class="section-title">信息认证强度</div>
+                    <div class="section-subtitle">各平台身份核验体系 × 信任壁垒对比</div>
+                </div>
+            </div>
+            <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>认证维度</th>
+                            <th>看准</th>
+                            <th>青藤之恋</th>
+                            <th>世纪佳缘/珍爱网</th>
+                            <th>探探</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-label">实名认证</td>
+                            <td>✅ 身份证+人脸</td>
+                            <td>✅ 身份证+人脸</td>
+                            <td>✅ 身份证</td>
+                            <td>✅ 身份证</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">学历认证</td>
+                            <td>✅ 学信网对接</td>
+                            <td>✅ 学信网对接（核心）</td>
+                            <td>❌ 自填</td>
+                            <td>❌ 无</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">职业认证</td>
+                            <td>✅ 企业背调（独家）</td>
+                            <td>⚠️ 自填+抽查</td>
+                            <td>❌ 自填</td>
+                            <td>❌ 无</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">收入认证</td>
+                            <td>✅ 纳税记录核验</td>
+                            <td>❌ 无</td>
+                            <td>❌ 自填</td>
+                            <td>❌ 无</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">资产认证</td>
+                            <td>✅ 车产+房产</td>
+                            <td>❌ 无</td>
+                            <td>⚠️ 高端会员可选</td>
+                            <td>❌ 无</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">婚况认证</td>
+                            <td>✅ 单身证明</td>
+                            <td>✅ 单身承诺</td>
+                            <td>⚠️ 基础核验</td>
+                            <td>❌ 无</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">综合评级</td>
+                            <td>
+                                <div class="star-rating">★★★★★</div>
+                                <span class="tag tag-purple">行业最强</span>
+                            </td>
+                            <td>
+                                <div class="star-rating">★★★☆☆</div>
+                                <span class="tag tag-green">学历强</span>
+                            </td>
+                            <td>
+                                <div class="star-rating">★★☆☆☆</div>
+                                <span class="tag tag-gray">基础实名</span>
+                            </td>
+                            <td>
+                                <div class="star-rating">★☆☆☆☆</div>
+                                <span class="tag tag-gray">最弱</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 核心洞察 -->
+        <div class="section">
+            <div class="insight-card">
+                <h3>🎯 核心结论</h3>
+                <p>「看准」的核心竞争力并非功能层面的微创新，而是<strong>资产复用与逻辑迁移</strong>：把BOSS直聘在招聘场景积累的企业认证、薪资核验、学历审核能力，完整平移到婚恋场景，直接解决了行业最大痛点——信息造假。</p>
+                <ul class="insight-list">
+                    <li><strong>付费深度机会</strong>：当前付费渗透率（8-12%）低于传统婚恋平台，但职场人群消费力强，ARPU有提升空间</li>
+                    <li><strong>变现路径</strong>：会员订阅为主（55%），可拓展线下活动+企业定制，预估付费深度可达★★★★</li>
+                    <li><strong>竞争壁垒</strong>：信息认证强度行业第一，形成差异化信任溢价，支撑中高端定价策略</li>
+                    <li><strong>风险提示</strong>：需平衡商业化与用户体验，避免重蹈传统婚恋平台强销售覆辙</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 市场机会 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🚀</div>
+                <div>
+                    <div class="section-title">市场机会 × 突破路径</div>
+                    <div class="section-subtitle">看准的核心竞争优势与增长机会</div>
+                </div>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: var(--primary);"></div>
+                            <span class="brand-name">流量红利</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="info-list">
+                            <li>复用BOSS直聘数千万月活职场用户</li>
+                            <li>获客成本远低于行业平均</li>
+                            <li>职场用户画像精准，转化效率高</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: var(--success);"></div>
+                            <span class="brand-name">信任空白</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="info-list">
+                            <li>现有平台职业/薪资核验薄弱</li>
+                            <li>独家具备招聘级企业背调能力</li>
+                            <li>信息真实性形成差异化壁垒</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: var(--accent);"></div>
+                            <span class="brand-name">需求匹配</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="info-list">
+                            <li>职场人社交圈封闭，刚需同行业伴侣</li>
+                            <li>同收入、同成长节奏的匹配需求</li>
+                            <li>职场主题相亲局差异化场景</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="brand-dot" style="background: var(--warning);"></div>
+                            <span class="brand-name">业务对冲</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="info-list">
+                            <li>婚恋为弱周期刚需</li>
+                            <li>对冲招聘行业经济周期波动</li>
+                            <li>打造第二增长曲线</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 差异化微创新 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">💡</div>
+                <div>
+                    <div class="section-title">差异化微创新</div>
+                    <div class="section-subtitle">看准 vs 竞品的功能创新对比</div>
+                </div>
+            </div>
+            <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>创新点</th>
+                            <th>看准</th>
+                            <th>青藤之恋</th>
+                            <th>世纪佳缘/珍爱网</th>
+                            <th>探探</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-label">个人主页</td>
+                            <td>简历式标签化展示（学历、公司、职级、年薪）</td>
+                            <td>兴趣+性格+MBTI展示</td>
+                            <td>传统资料页</td>
+                            <td>照片墙为主</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">推荐机制</td>
+                            <td>每日限量10张（高质不高频）</td>
+                            <td>每日限量推荐（真诚氛围）</td>
+                            <td>海量推荐+搜索</td>
+                            <td>无限滑动</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">沟通机制</td>
+                            <td>双向互选才可聊天（面试逻辑）</td>
+                            <td>双向喜欢才可聊天</td>
+                            <td>付费解锁沟通</td>
+                            <td>匹配即可聊</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">隐私设置</td>
+                            <td>同公司/同行业避嫌匹配</td>
+                            <td>基础隐私设置</td>
+                            <td>基础隐私设置</td>
+                            <td>地理位置模糊</td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">核心逻辑</td>
+                            <td><span class="tag tag-purple">招聘流程迁移</span></td>
+                            <td><span class="tag tag-green">精神匹配优先</span></td>
+                            <td><span class="tag tag-red">红娘服务驱动</span></td>
+                            <td><span class="tag tag-orange">即时满足</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Market Research 2025 · 相亲APP竞品深度分析</p>
     </div>
 </body>
 </html>
